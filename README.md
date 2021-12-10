@@ -22,7 +22,7 @@ This file will walk you through the steps of connecting to your GCP bucket from 
 filename: 'Sentiment.py'
 uses Johnsnowlab pretrained models for obtaining a high-level sentiment label for each comment in the dataset.
 
-filename: 'Topiclabelling.py'
+filename: 'Topic Labelling.py'
 Uses Johnsnowlab pretrained model to extract major topics from the dataset.
 
 
