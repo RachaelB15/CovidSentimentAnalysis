@@ -19,11 +19,10 @@ drive.mount('/content/drive')
 
 """## Connect to Google Storage"""
 
-#Ensure GCP storage key JSON file is in Shared Drive
+#Ensure GCP storage key JSON file is in Shared Drive(follow instructions at https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
 import sys,os,os.path
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/content/drive/Shareddrives/BigData/Data/jsl-bigdataproject-c0e15b3e85de.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "/path/to/key.json"
 
-#Method 1
 print(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
 
 # Imports the Google Cloud client library
@@ -41,7 +40,7 @@ for bucket in client.list_buckets():
 *Before running this cell, sign into kaggle, navigate to "my account" and create API key. save to local directory. one key can be used for multiple datasets.*
 """
 
-## create kaggle api token first then run cell
+## create kaggle api token first then run cell(create kaggle account, go to my settings, then "create API token".
 
 from google.colab import files
 
@@ -60,7 +59,7 @@ for fn in uploaded.keys():
 
 """## GCP Storage APIs"""
 
-reddit_bucket = client.bucket("reddit_data_bucket1")
+reddit_bucket = client.bucket("GCP_data_bucket") #replace GCP_data_bucket with your unique bucket name
 
 blobs = client.list_blobs(reddit_bucket)
 
@@ -69,8 +68,8 @@ for blob in blobs:
     print(blob.name)
 
 blob = reddit_bucket.blob("the-reddit-covid-dataset-comments.csv")
-blob.upload_from_filename("/content/the-reddit-covid-dataset-comments.csv")
+blob.upload_from_filename("/path/the-reddit-covid-dataset-comments.csv") # change path to your path
 
 blob = reddit_bucket.blob("the-reddit-covid-dataset-posts.csv")
-blob.upload_from_filename("/content/the-reddit-covid-dataset-posts.csv")
+blob.upload_from_filename("/path/the-reddit-covid-dataset-posts.csv") # change path to your path
 
