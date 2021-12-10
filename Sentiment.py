@@ -25,16 +25,9 @@ print("Apache Spark version: {}".format(spark.version))
 
 """#### load from GCP"""
 
-df = spark.read.format("csv").option("header", "true").option("inferSchema", "true").option("multiLine", "true").option('escape', '"').load('gs://reddit_data_bucket1/the-reddit-covid-dataset-comments.csv')
+df = spark.read.format("csv").option("header", "true").option("inferSchema", "true").option("multiLine", "true").option('escape', '"').load('gs://bucket_name/the-reddit-covid-dataset-comments.csv')
 
 df.show(20)
-
-"""#### Read sample from drive"""
-
-#from google.colab import drive
-#drive.mount('/content/drive')
-
-#df = spark.read.option("multiLine", "true").csv('/content/drive/Shareddrives/BigData/Data/review_data.csv', header = True, inferSchema=True)
 
 """# Pipelines
 
@@ -77,4 +70,4 @@ res2=lang_result.groupby('`subreddit.name`').pivot('language result')
 
 #res2.show(5)
 
-"""### Please check our [Models Hub](https://nlp.johnsnowlabs.com/models) for more pretrained models and pipelines! 😊 """
+"""### Please check JSL labs @ [Models Hub](https://nlp.johnsnowlabs.com/models) for more pretrained models and pipelines! 😊 """
